@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIHATI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/patient/dash.css' %}">
+</head>
+<body>
+
+<div class="dashboard-container">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+           <a href="{% url 'patient_home'%}" class="logo-text"><span >SIHATI <span class="arabic">صحتي</span></span></a> 
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active"><a href="#"><i class="fas fa-th-large"></i> Vue d'ensemble</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Rendez-vous</a></li>
+                <li><a href="#"><i class="fas fa-pills"></i> Mes Médicaments</a></li>
+                <li><a href="#"><i class="fas fa-shopping-bag"></i> Commandes</a></li>
+                <li><a href="#"><i class="fas fa-file-medical"></i> Dossier Santé</a></li>
+                <li><a href="#"><i class="fas fa-user-circle"></i> Mon Profil</a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="{% url 'logout' %}" class="logout-link">
+                <i class="fas fa-sign-out-alt"></i> Déconnexion
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="main-header">
+            <div class="welcome-text">
+                <h1>Bonjour, {{ user.first_name }} 👋</h1>
+                <p>Voici un résumé de votre activité santé aujourd'hui.</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-notif"><i class="far fa-bell"></i><span class="dot"></span></button>
+                <div class="user-avatar">
+                    {% if user.profile_picture %}
+                        <img src="{{ user.profile_picture.url }}" alt="User">
+                    {% else %}
+                        <span>{{ user.first_name|slice:":1" }}</span>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon icon-teal"><i class="fas fa-calendar-check"></i></div>
+                <div class="stat-details">
+                    <h3>{{ appointments|length }}</h3>
+                    <p>Rendez-vous</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon icon-blue"><i class="fas fa-box"></i></div>
+                <div class="stat-details">
+                    <h3>{{ orders|length }}</h3>
+                    <p>Commandes</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon icon-orange"><i class="fas fa-clock"></i></div>
+                <div class="stat-details">
+                    <h3>{{ reservations|length }}</h3>
+                    <p>Réservations</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-grid">
+            <div class="data-section">
+                <div class="section-header">
+                    <h2>Prochains rendez-vous</h2>
+                    <a href="#" class="link-more">Voir tout</a>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Médecin</th>
+                                <th>Spécialité</th>
+                                <th>Date & Heure</th>
+                                <th>Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for appt in appointments %}
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="avatar-table">Dr</div>
+                                        <span>Dr. {{ appt.doctor.user.last_name }}</span>
+                                    </div>
+                                </td>
+                                <td>{{ appt.doctor.speciality }}</td>
+                                <td>{{ appt.date|date:"d M Y • H:i" }}</td>
+                                <td><span class="status-badge confirmed">Confirmé</span></td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4" class="empty-state">Aucun rendez-vous prévu.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="data-section">
+                <div class="section-header">
+                    <h2>Commandes récentes</h2>
+                </div>
+                <div class="order-list">
+                    {% for order in orders %}
+                    <div class="order-item">
+                        <div class="order-info">
+                            <span class="order-id">#ORD-{{ order.id }}</span>
+                            <span class="order-date">{{ order.created_at|date:"d/m/Y" }}</span>
+                        </div>
+                        <span class="order-price">{{ order.total_price }} DA</span>
+                        <span class="status-dot in-progress">En cours</span>
+                    </div>
+                    {% empty %}
+                    <p class="empty-state">Aucune commande.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIHATI - Trouver un médecin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/patient/doctors_list.css' %}">
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    
+    <div class="header-section mb-5 text-center">
+        <h2 class="display-6 fw-bold title-sihati">Trouver un médecin</h2>
+        <p class="text-muted">Prenez rendez-vous avec les meilleurs spécialistes en Algérie</p>
+    </div>
+
+    <div class="search-container shadow-sm mb-5">
+        <form method="GET" class="row g-0">
+            <div class="col-md-4 search-input-group">
+                <i class="fas fa-user-md icon-search"></i>
+                <input type="text" name="q" class="form-control-sihati" placeholder="Nom du médecin...">
+            </div>
+            <div class="col-md-3 search-input-group">
+                <i class="fas fa-stethoscope icon-search"></i>
+                <input type="text" name="speciality" class="form-control-sihati" placeholder="Spécialité">
+            </div>
+            <div class="col-md-3 search-input-group">
+                <i class="fas fa-map-marker-alt icon-search"></i>
+                <input type="text" name="wilaya" class="form-control-sihati" placeholder="Wilaya">
+            </div>
+            
+            <div class="col-md-2 p-2">
+                <button type="submit" class="btn-search-sihati w-100 h-100">
+                    <i class="fas fa-search me-2"></i>Rechercher
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="row g-4">
+        {% for doctor in doctors %}
+        <div class="col-md-6 col-lg-4">
+            <div class="doctor-card card border-0 h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-start justify-content-between mb-3">
+                        <div class="doctor-avatar">
+                            {% if doctor.profile_picture %}
+                                <img src="{{ doctor.profile_picture.url }}" alt="Dr">
+                            {% else %}
+                                <img src="https://ui-avatars.com/api/?name=Dr+{{ doctor.user.last_name }}&background=00767C&color=fff" alt="Dr">
+                            {% endif %}
+                        </div>
+                        <div class="rating-badge">
+                            <i class="fas fa-star"></i> {{ doctor.rating|default:"4.5" }}
+                        </div>
+                    </div>
+
+                    <h5 class="fw-bold mb-1">Dr. {{ doctor.user.get_full_name }}</h5>
+                    <span class="speciality-tag mb-3 d-inline-block">{{ doctor.speciality }}</span>
+
+                    <div class="doctor-details">
+                        <p class="mb-2"><i class="fas fa-hospital-user me-2 text-teal"></i> {{ doctor.commune }}, {{ doctor.wilaya }}</p>
+                        <p class="small text-muted"><i class="far fa-calendar-check me-2 text-teal"></i> Prochain RDV disponible : <span class="text-dark fw-medium">Demain</span></p>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-top">
+                        <a href="{% url 'doctor_profile' doctor.id %}" class="btn-profile-sihati w-100">
+                            Voir le profil & RDV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-5">
+            <img src="{% static 'images/empty.svg' %}" alt="aucun résultat" style="width: 150px; opacity: 0.5;">
+            <p class="text-muted mt-3">Désolé, aucun médecin ne correspond à votre recherche.</p>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+:root {
+    --primary-teal: #00767C;
+    --dark-teal: #005a5f;
+    --light-teal: #f0f9f9;
+    --text-main: #1A202C;
+}
+
+body { font-family: 'Inter', sans-serif; }
+
+.title-sihati { font-family: 'Playfair Display', serif; color: var(--text-main); }
+
+/* Search Container */
+.search-container {
+    background: white;
+    border-radius: 15px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.search-input-group {
+    position: relative;
+    border-right: 1px solid #eee;
+}
+
+.icon-search {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-teal);
+    font-size: 0.9rem;
+}
+
+.form-control-sihati {
+    width: 100%;
+    border: none;
+    padding: 20px 15px 20px 45px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.btn-search-sihati {
+    background: var(--primary-teal);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-search-sihati:hover { background: var(--dark-teal); }
+
+/* Doctor Card */
+.doctor-card {
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.doctor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.doctor-avatar img {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    object-fit: cover;
+}
+
+.rating-badge {
+    background: #FFFBEB;
+    color: #D69E2E;
+    padding: 5px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.speciality-tag {
+    background: var(--light-teal);
+    color: var(--primary-teal);
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.doctor-details i { width: 20px; }
+.text-teal { color: var(--primary-teal); }
+
+.btn-profile-sihati {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background: #f8fafc;
+    color: var(--primary-teal);
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.btn-profile-sihati:hover {
+    background: var(--primary-teal);
+    color: white;
+}

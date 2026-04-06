@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. {{ doctor.user.last_name }} - SIHATI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/patient/doctor_profile.css' %}">
+</head>
+<body class="bg-light">
+
+<div class="container py-2">
+    <nav class="mb-3">
+        <a href="javascript:history.back()" class="text-decoration-none text-teal fw-bold">
+            <i class="fas fa-arrow-left me-2"></i> Retour aux résultats
+        </a>
+    </nav>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card profile-main-card border-0 shadow-sm text-center p-4 sticky-top">
+                <div class="avatar-container mb-3">
+                    {% if doctor.profile_picture %}
+                        <img src="{{ doctor.profile_picture.url }}" class="profile-img">
+                    {% else %}
+                        <img src="https://ui-avatars.com/api/?name=Dr+{{ doctor.user.last_name }}&background=00767C&color=fff&size=128" class="profile-img">
+                    {% endif %}
+                    <span class="status-indicator online"></span>
+                </div>
+
+                <h3 class="fw-bold mb-1">Dr. {{ doctor.user.get_full_name }}</h3>
+                <p class="speciality-text">{{ doctor.speciality }}</p>
+                
+                <div class="rating-box mb-3">
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star-half-alt text-warning"></i>
+                    <span class="ms-2 fw-bold">4.8</span> <span class="text-muted small">(124 avis)</span>
+                </div>
+
+                <div class="info-pills mb-4">
+                    <span class="badge-pill"><i class="fas fa-map-marker-alt"></i> {{ doctor.commune }}</span>
+                    <span class="badge-pill"><i class="fas fa-briefcase"></i> {{ doctor.years_of_experience }} ans exp.</span>
+                </div>
+
+                <hr class="my-4 opacity-10">
+
+                <div class="price-section mb-4">
+                    <span class="text-muted d-block small mb-1">Frais de consultation</span>
+                    <h4 class="text-teal fw-bold">{{ doctor.consultation_fee }} DA</h4>
+                </div>
+
+                <a href="#" class="btn btn-teal-primary w-100 py-3 shadow-sm">
+                    <i class="far fa-calendar-check me-2"></i> Prendre rendez-vous
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm p-4 mb-4">
+                <h5 class="section-title"><i class="fas fa-user-md me-2"></i> À propos du médecin</h5>
+                <div class="section-content mt-3">
+                    <p>{{ doctor.bio|default:"Le Dr. " |add:doctor.user.last_name|add:" est un spécialiste dévoué à offrir les meilleurs soins à ses patients." }}</p>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm p-4 mb-4">
+                <h5 class="section-title"><i class="fas fa-graduation-cap me-2"></i> Parcours & Expertise</h5>
+                <div class="row mt-3">
+                    <div class="col-md-6 mb-3">
+                        <div class="expert-item">
+                            <span class="text-muted small d-block">Spécialité principale</span>
+                            <span class="fw-bold">{{ doctor.speciality }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="expert-item">
+                            <span class="text-muted small d-block">Numéro de licence</span>
+                            <span class="fw-bold text-uppercase">{{ doctor.license_number }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm p-4 mb-4">
+                <h5 class="section-title"><i class="fas fa-hospital me-2"></i> Informations sur le cabinet</h5>
+                <div class="d-flex align-items-start mt-3">
+                    <div class="clinic-icon-box">
+                        <i class="fas fa-clinic-medical"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="fw-bold mb-1">{{ doctor.clinic_name }}</h6>
+                        <p class="text-muted mb-2">{{ doctor.clinic_address }}</p>
+                        <p class="mb-0 fw-medium"><i class="fas fa-directions text-teal me-1"></i> {{ doctor.wilaya }}, {{ doctor.commune }}</p>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div class="card border-0 shadow-sm p-4">
+                <h5 class="section-title"><i class="fas fa-clock me-2"></i> Disponibilités habituelles</h5>
+                <div class="schedule-grid mt-3">
+                    <div class="day-item"><span>Dim - Jeu</span><strong>08:30 - 16:30</strong></div>
+                    <div class="day-item"><span>Samedi</span><strong>09:00 - 13:00</strong></div>
+                    <div class="day-item closed"><span>Vendredi</span><strong>Fermé</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+:root {
+    --primary-teal: #00767C;
+    --dark-teal: #005a5f;
+    --light-bg: #f8fafb;
+    --text-dark: #1e293b;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+}
+
+.text-teal { color: var(--primary-teal); }
+
+/* Sidebar Sticky */
+.sticky-top { top: 30px; z-index: 10; }
+
+/* Profile Card */
+.profile-main-card {
+    border-radius: 24px;
+}
+
+.avatar-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 35px;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 18px;
+    height: 18px;
+    background: #10b981;
+    border: 3px solid white;
+    border-radius: 50%;
+}
+
+.speciality-text {
+    color: var(--primary-teal);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.badge-pill {
+    background: #f1f5f9;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+    margin: 0 4px;
+}
+
+.btn-teal-primary {
+    background: var(--primary-teal);
+    color: white;
+    border-radius: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+    border: none;
+}
+
+.btn-teal-primary:hover {
+    background: var(--dark-teal);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Sections Styles */
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 12px;
+}
+
+.expert-item {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-teal);
+}
+
+.clinic-icon-box {
+    width: 50px;
+    height: 50px;
+    background: #e6f4f4;
+    color: var(--primary-teal);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.map-placeholder {
+    height: 200px;
+    background: #e2e8f0;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-image: url('https://www.google.com/maps/d/u/0/thumbnail?mid=1_Kk9S-8Hj4mKjHn0i0vH-6lU2Z8'); /* Placeholder bg */
+    background-size: cover;
+    position: relative;
+}
+
+.map-overlay {
+    background: rgba(255,255,255,0.9);
+    padding: 15px 25px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-teal);
+}
+
+/* Schedule */
+.schedule-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.day-item {
+    flex: 1;
+    min-width: 140px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.day-item span { display: block; font-size: 0.8rem; color: #64748b; }
+.day-item strong { color: var(--text-dark); }
+.day-item.closed { background: #fff1f2; border-color: #fecdd3; }
+.day-item.closed strong { color: #e11d48; }

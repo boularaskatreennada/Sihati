@@ -1,0 +1,152 @@
+:root {
+    --primary-teal: #008080;
+    --primary-dark: #004d4d;
+    --bg-light: #fdfbf7;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: white;
+}
+
+h1, h2, .navbar-brand {
+    font-family: 'Playfair Display', serif;
+}
+
+.text-primary {
+    color: var(--primary-teal) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-teal);
+    border-color: var(--primary-teal);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-outline-primary {
+    color: var(--primary-teal);
+    border-color: var(--primary-teal);
+}
+
+.hero-section {
+    background: radial-gradient(circle at top right, rgba(0, 128, 128, 0.05), transparent);
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.5rem;
+}
+
+.bg-light-blue { background-color: #e0f7fa; }
+.bg-light-success { background-color: #e8f5e9; }
+.bg-light-warning { background-color: #fff3e0; }
+
+.card {
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.hero-img-gradient {
+    height: 450px; /* Ou la hauteur définie dans ton design */
+    background-size: cover;      /* L'image couvre toute la div */
+    background-position: center; /* L'image est centrée */
+    background-repeat: no-repeat;
+    border-radius: 30px;         /* Pour garder les bords arrondis de ton design */
+    position: relative;
+    overflow: hidden;
+
+}
+
+/* Custom spacing for the dot process indicators in your design */
+.process-step {
+    position: relative;
+}
+
+footer p{
+    color: grey;
+    font-size: small;
+}
+footer li{
+    color:grey;
+    font-size: small;
+}
+.textt{
+    color: grey;
+    font-size: small;}
+
+
+    /* Section Processus */
+.process-item {
+    position: relative;
+    z-index: 2;
+}
+
+.process-icon {
+    width: 100px;
+    height: 100px;
+    background-color: var(--teal-light); /* Utilise ta variable #ccfbf1 */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 2.5rem;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.process-item:hover .process-icon {
+    transform: translateY(-10px);
+}
+
+.step-number {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: var(--teal);
+    color: white;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+}
+
+/* La ligne en pointillés entre les étapes */
+
+.process-container {
+    position: relative;
+}
+
+.process-line {
+    position: absolute;
+    top: 50px; 
+    height: 2px;
+    border-top: 2px dashed #cbd5e1;
+    z-index: 1;
+}
+
+.bg-teal-light {
+    background-color: #ccfbf1 !important;
+}
+
+.text-teal {
+    color: #0d9488 !important;
+}

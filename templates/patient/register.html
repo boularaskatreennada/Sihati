@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIHATI - Créer un compte patient</title>
+    <link rel="stylesheet" href="{% static 'styles/patient/register.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="registration-container">
+        <aside class="info-sidebar">
+            <div class="logo">
+                <span class="logo-text">SIHATI <span class="arabic">صحتي</span></span>
+            </div>
+            <div class="sidebar-content">
+                <h1>Rejoignez des milliers de patients</h1>
+                <p>Créez votre compte patient et accédez à tous les services de santé numériques en Algérie.</p>
+                
+                <ul class="features-list">
+                    <li>Prise de rendez-vous médicaux en ligne, 24h/24</li>
+                    <li>Vérification de la disponibilité des médicaments</li>
+                    <li>Marketplace de produits médicaux avec livraison</li>
+                    <li>Suivi de votre historique médical en ligne</li>
+                    <li>Inscription 100% gratuite, aucune carte requise</li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="form-section">
+           <div class="container">
+            <h2>Créer un compte patient</h2>
+            <p>Déjà inscrit ? <a href="">Se connecter</a></p>
+
+    <form method="POST" id="registrationForm">
+        {% csrf_token %}
+
+        <!-- STEP 1 -->
+        <!--<div id="step1">
+            <h6>Informations de compte</h6>
+
+            <input type="text" name="first_name" placeholder="Prénom" required>
+            <input type="text" name="last_name" placeholder="Nom" required>
+            <input type="email" name="email" placeholder="Email" required>
+
+            <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirmer" required>
+
+            <input type="text" name="phone" placeholder="Téléphone" required>
+            <input type="text" name="wilaya" placeholder="Wilaya" required>
+            <input type="text" name="commune" placeholder="Commune">
+
+            <button type="button" id="nextBtn">Suivant</button>
+        </div>
+
+        <!-- STEP 2 -->
+        
+        <div id="step1">
+    <div class="form-header-group">
+        <h6>Informations de compte</h6>
+        <span class="step-counter">Étape 1/2</span>
+    </div>
+
+    <div class="form-row">
+        <div class="input-group">
+            <label>Prénom</label>
+            <input type="text" name="first_name" placeholder="Ex: Ahmed" required>
+        </div>
+        <div class="input-group">
+            <label>Nom</label>
+            <input type="text" name="last_name" placeholder="Ex: Ben" required>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="nom@exemple.com" required>
+    </div>
+
+    <div class="form-row">
+        <div class="input-group">
+            <label>Mot de passe</label>
+            <input type="password" name="password" id="password" placeholder="••••••••" required>
+        </div>
+        <div class="input-group">
+            <label>Confirmation</label>
+            <input type="password" name="confirm_password" id="confirm_password" placeholder="••••••••" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="input-group">
+            <label>Téléphone</label>
+            <input type="text" name="phone" placeholder="05XX XX XX XX" required>
+        </div>
+        <div class="input-group">
+            <label>Wilaya</label>
+            <input type="text" name="wilaya" placeholder="Ex: Alger" required>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label>Commune</label>
+        <input type="text" name="commune" placeholder="Ex: Hydra">
+    </div>
+
+    <button type="button" id="nextBtn">Suivant</button>
+</div>
+        <div id="step2" style="display:none;">
+            <h2>Informations médicales</h2>
+
+            <label>Date de naissance</label>
+            <input type="date" name="date_of_birth">
+
+            <label>Genre</label>
+            <select name="gender">
+                <option value="">Choisir</option>
+                <option value="male">Homme</option>
+                <option value="female">Femme</option>
+            </select>
+
+            <label>Groupe sanguin</label>
+            <select name="blood_group">
+                <option value="">Choisir</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+
+            <textarea name="allergies" placeholder="Allergies"></textarea>
+            <textarea name="chronic_diseases" placeholder="Maladies chroniques"></textarea>
+
+            <button type="submit">Confirmer</button>
+        </div>
+
+    </form>
+
+</div>
+        </main>
+    </div>
+
+<script src="{% static 'js/patient/register.js' %}"></script>    
+</body>
+</html>
